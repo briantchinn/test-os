@@ -25,6 +25,7 @@ modules:
       packages:
         - micro
         - starship
+        - freeipa-client
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -40,6 +41,7 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
           - org.gnome.Loupe
+          - libraoffice
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
