@@ -16,6 +16,9 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: script
+    scripts:
+    - netbird.sh # example: run files/scripts/netbird_repo.sh
   - type: dnf
     repos:
       copr:
