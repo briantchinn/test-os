@@ -16,9 +16,8 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - netbird.bash
 
-  - type: script
-  snippet: sudo sh -c 'echo -e "[netbird]\nname=netbird\nbaseurl=https://pkgs.netbird.io/yum/\nenabled=1\ngpgcheck=0\ngpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key\nrepo_gpgcheck=1" | tee /etc/yum.repos.d/netbird.repo'
   - type: dnf
     repos:
       copr:
