@@ -39,8 +39,25 @@ modules:
     - netbird
   - type: systemd
     system:
-      enabled:
-        - netbird.service
+      units:
+      - name: "netbird.service"
+        # Create a drop-in file to be placed in /etc/systemd/system/netbird.service.d/
+        # The 50-socket-permissions.conf is the filename for the drop-in.
+        dropins:
+          - name: "50-socket-permissions.conf"
+            # The content for the drop-in file
+            content: |
+              [Service]
+              # Ensure the socket directory is created with correct permissions
+              RuntimeDirectory=netbird
+              RuntimeDirectoryMode=0755
+              
+              # Set the group ownership of the socket
+              SocketGroup=wheel # e.g., 'netbird' or 'wheel'
+  
+              # Ensure the correct permissions are applied to the socket file
+              # 0660 allows read/write for the owner (root) and the specified group
+              UMask=0007 # This sets the inverse of the desired permissions (0660)
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
