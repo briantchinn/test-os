@@ -14,3 +14,6 @@ gpgcheck=0
 gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
 repo_gpgcheck=1
 EOF
+
+
+sudo mkdir -p /var/log/netbird
