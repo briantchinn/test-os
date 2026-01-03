@@ -5,17 +5,15 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
-sudo dnf config-manager addrepo --from-repofile=/etc/yum.repos.d/netbird.repo
-
-#sudo tee /etc/yum.repos.d/netbird.repo <<EOF
-#[netbird]
-#name=netbird
-#baseurl=https://pkgs.netbird.io/yum/
-#enabled=1
-#gpgcheck=0
-#gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
-#repo_gpgcheck=1
-#EOF
+sudo tee /etc/yum.repos.d/netbird.repo <<EOF
+[netbird]
+name=netbird
+baseurl=https://pkgs.netbird.io/yum/
+enabled=1
+gpgcheck=0
+gpgkey=https://pkgs.netbird.io/yum/repodata/repomd.xml.key
+repo_gpgcheck=1
+EOF
 
 
-sudo mkdir -p /var/log/netbird
+#sudo mkdir -p /var/log/netbird
