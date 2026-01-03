@@ -16,4 +16,4 @@ repo_gpgcheck=1
 EOF
 
 
-#sudo mkdir -p /var/log/netbird
+sudo mkdir -p /var/log/netbird
